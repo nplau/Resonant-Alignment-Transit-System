@@ -25,12 +25,10 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "test_config.h"
-#include "app_tests.h"
-
 #include "debug.h"
 #include "pwm.h"
 #include "adc.h"
+#include "simulation.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -124,6 +122,8 @@ int main(void)
 
   ADC_Module_Init(&hadc1);
 
+  //Simulation_Init(DEMO_NORMAL_CHARGING);
+
   Debug_Print("\r\n=== Resonant Alignment Transit System ===\r\n");
   Debug_Print("Firmware Version: 0.1\r\n");
   Debug_Print("Debug, PWM, ADC initialized.\r\n");
@@ -136,7 +136,33 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  AppTests_Run();
+	  SystemInputs inputs;
+
+	  inputs = Simulation_GetInputs();
+
+
+	  Debug_Print("\r\n--- Simulation Data ---\r\n");
+
+	  Debug_Print("Bus Distance: %.1f cm\r\n",
+	              inputs.busDistance_cm);
+
+	  Debug_Print("Driver Temperature: %.1f C\r\n",
+	              inputs.driverTemperature_C);
+
+	  Debug_Print("MCU Temperature: %.1f C\r\n",
+	              inputs.mcuTemperature_C);
+
+	  Debug_Print("Power Factor: %.2f\r\n",
+	              inputs.powerFactor);
+
+	  Debug_Print("Over Current: %s\r\n",
+	              inputs.overCurrent ? "FAULT" : "OK");
+
+	  Debug_Print("Over Voltage: %s\r\n",
+	              inputs.overVoltage ? "FAULT" : "OK");
+
+
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
