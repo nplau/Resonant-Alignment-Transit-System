@@ -54,22 +54,30 @@ void StateMachine_Update(void)
 
     if (inputs.currentSample > MAX_INPUT_CURRENT_A)
     {
+    	Debug_Print("\r\n[FAULT]\r\n");
+    	Debug_Print("Overcurrent Fault\r\n");
     	currentState = STATE_FAULT;
     }
 
     else if (inputs.voltageSample > MAX_INPUT_VOLTAGE_V)
     {
-        currentState = STATE_FAULT;
+    	Debug_Print("\r\n[FAULT]\r\n");
+    	Debug_Print("Overvoltage Fault\r\n");
+    	currentState = STATE_FAULT;
     }
 
     else if (inputs.driverTemperature_C > MAX_DRIVER_TEMP_C)
     {
-        currentState = STATE_FAULT;
+    	Debug_Print("\r\n[FAULT]\r\n");
+    	Debug_Print("Driver Overheating\r\n");
+    	currentState = STATE_FAULT;
     }
 
     else if (inputs.mcuTemperature_C > MAX_MCU_TEMP_C)
     {
-        currentState = STATE_FAULT;
+    	Debug_Print("\r\n[FAULT]\r\n");
+    	Debug_Print("MCU Overheating\r\n");
+    	currentState = STATE_FAULT;
     }
 
     switch(currentState)
@@ -191,9 +199,13 @@ void StateMachine_Update(void)
 
     case STATE_FAULT:
 
-        Debug_Print("\r\n[FAULT]\r\n");
-
         PWM_Stop();
+
+        Debug_Print("Driver Temp..... %.1f C\r\n",
+            	        inputs.driverTemperature_C);
+
+		Debug_Print("MCU Temp........ %.1f C\r\n",
+				inputs.mcuTemperature_C);
 
 
 		currentState = STATE_SHUTDOWN;

@@ -266,7 +266,7 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
 
     .voltageSample = 200,
     .currentSample = 8,
-	.phaseDelay_us = 0,
+	.phaseDelay_us = 0.3,
 
 
     .overCurrent = false,
@@ -280,7 +280,7 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
 /*
  * Step 8
  *
- * Fault condition
+ * Fault condition -> driver overheat
  *
  */
 
@@ -292,13 +292,12 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
     .driverTemperature_C = 90,
     .mcuTemperature_C = 80,
 
-    .voltageSample = 250,
+    .voltageSample = 240,
     .currentSample = 50,
-	.phaseDelay_us = 0,
+	.phaseDelay_us = 0.2,
 
 
-
-    .overCurrent = true,
+    .overCurrent = false,
     .overVoltage = false
 },
 

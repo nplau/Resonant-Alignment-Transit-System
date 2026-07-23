@@ -16,7 +16,7 @@ float CalculatePowerFactor(float phaseDelay_us)
 
     float phaseRadians;
 
-
+    /*2pi ft*/
     phaseRadians =
         2.0f * M_PI *
         FREQUENCY_HZ *
