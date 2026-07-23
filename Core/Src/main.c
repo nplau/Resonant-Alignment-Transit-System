@@ -137,8 +137,6 @@ int main(void)
   Debug_Print("UART ............... OK\r\n");
   Debug_Print("PWM ................ OK\r\n");
   Debug_Print("ADC ................ OK\r\n");
-  Debug_Print("Simulation ......... OK\r\n");
-  Debug_Print("State Machine ...... OK\r\n");
 
   Debug_Print("\r\nSystem Ready\r\n");
   Debug_Print("----------------------------------------------------\r\n");

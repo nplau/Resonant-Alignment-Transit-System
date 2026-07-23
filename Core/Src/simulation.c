@@ -290,7 +290,7 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
     .misalignment_mm = 50,
 
     .driverTemperature_C = 90,
-    .mcuTemperature_C = 80,
+    .mcuTemperature_C = 40,
 
     .voltageSample = 240,
     .currentSample = 50,
