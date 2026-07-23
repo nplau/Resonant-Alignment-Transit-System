@@ -1,5 +1,7 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/state_machine.o: ../Core/Src/state_machine.c \
+ ../Core/Inc/state_machine.h ../Core/Inc/simulation.h \
+ ../Core/Inc/system_types.h ../Core/Inc/config.h ../Core/Inc/debug.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -30,9 +32,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Inc/debug.h ../Core/Inc/main.h ../Core/Inc/pwm.h \
- ../Core/Inc/adc.h ../Core/Inc/simulation.h ../Core/Inc/system_types.h \
- ../Core/Inc/state_machine.h
+ ../Core/Inc/pwm.h
+../Core/Inc/state_machine.h:
+../Core/Inc/simulation.h:
+../Core/Inc/system_types.h:
+../Core/Inc/config.h:
+../Core/Inc/debug.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -65,10 +70,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-../Core/Inc/debug.h:
-../Core/Inc/main.h:
 ../Core/Inc/pwm.h:
-../Core/Inc/adc.h:
-../Core/Inc/simulation.h:
-../Core/Inc/system_types.h:
-../Core/Inc/state_machine.h:

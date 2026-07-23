@@ -48,14 +48,12 @@ typedef struct
     float busDistance_cm;
 
     float driverTemperature_C;
-
     float mcuTemperature_C;
 
+    float voltageSample;
+    float currentSample;
+
     float powerFactor;
-
-    bool overCurrent;
-
-    bool overVoltage;
 
 } SystemInputs;
 

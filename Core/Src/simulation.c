@@ -29,10 +29,10 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
         .driverTemperature_C = 25,
         .mcuTemperature_C = 25,
 
-        .powerFactor = 0.0,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.0
     },
 
 
@@ -41,15 +41,16 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Bus approaching station
      */
     {
-        .busDistance_cm = 100,
+        .busDistance_cm = 140,
 
         .driverTemperature_C = 25,
         .mcuTemperature_C = 25,
 
-        .powerFactor = 0.0,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.0
+
     },
 
 
@@ -58,15 +59,15 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Precharge region
      */
     {
-        .busDistance_cm = 50,
+        .busDistance_cm = 100,
 
         .driverTemperature_C = 26,
         .mcuTemperature_C = 25,
 
-        .powerFactor = 0.2,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.2
     },
 
 
@@ -75,15 +76,15 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Alignment check
      */
     {
-        .busDistance_cm = 20,
+        .busDistance_cm = 50,
 
         .driverTemperature_C = 27,
         .mcuTemperature_C = 26,
 
-        .powerFactor = 0.8,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.8
     },
 
 
@@ -92,15 +93,15 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Bus aligned, charging begins
      */
     {
-        .busDistance_cm = 10,
+        .busDistance_cm = 48,
 
         .driverTemperature_C = 30,
         .mcuTemperature_C = 27,
 
-        .powerFactor = 0.98,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.98
     },
 
 
@@ -109,15 +110,15 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Stable charging
      */
     {
-        .busDistance_cm = 10,
+        .busDistance_cm = 40,
 
         .driverTemperature_C = 32,
         .mcuTemperature_C = 28,
 
-        .powerFactor = 0.99,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.99
     },
 
 
@@ -131,10 +132,10 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
         .driverTemperature_C = 33,
         .mcuTemperature_C = 29,
 
-        .powerFactor = 0.7,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.7
     },
 
 
@@ -143,15 +144,15 @@ static SystemInputs normalChargingScenario[DEMO_LENGTH] =
      * Return to idle
      */
     {
-        .busDistance_cm = 200,
+        .busDistance_cm = 20,
 
         .driverTemperature_C = 25,
         .mcuTemperature_C = 25,
 
-        .powerFactor = 0.0,
+		.voltageSample = 50,
+		.currentSample = 30,
 
-        .overCurrent = false,
-        .overVoltage = false
+        .powerFactor = 0.0
     }
 
 };

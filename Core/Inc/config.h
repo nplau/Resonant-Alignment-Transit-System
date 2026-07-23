@@ -12,12 +12,15 @@
 
 #define BUS_DETECTION_DISTANCE_CM      150.0f
 
-/* Charging Margin */
+/* Charging Margin 5cm */
 
 #define CHARGING_MIN_DISTANCE_CM        45.0f
-#define CHARGING_MAX_DISTANCE_CM        55.0f
+#define CHARGING_MAX_DISTANCE_CM        50.0f
 
-/* Temperature Limits */
+/* Safety Limits */
+
+#define MAX_INPUT_CURRENT_A      		250.0f
+#define MAX_INPUT_VOLTAGE_V      		420.0f
 
 #define MAX_DRIVER_TEMP_C               70.0f
 #define MAX_MCU_TEMP_C                  70.0f

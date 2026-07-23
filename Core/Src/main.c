@@ -29,6 +29,7 @@
 #include "pwm.h"
 #include "adc.h"
 #include "simulation.h"
+#include "state_machine.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -122,11 +123,24 @@ int main(void)
 
   ADC_Module_Init(&hadc1);
 
+  StateMachine_Init();
+
   //Simulation_Init(DEMO_NORMAL_CHARGING);
 
-  Debug_Print("\r\n=== Resonant Alignment Transit System ===\r\n");
-  Debug_Print("Firmware Version: 0.1\r\n");
-  Debug_Print("Debug, PWM, ADC initialized.\r\n");
+  Debug_Print("\r\n");
+  Debug_Print("====================================================\r\n");
+  Debug_Print(" Resonant Alignment Transit System\r\n");
+  Debug_Print(" Wireless EV Charging Firmware Demo\r\n");
+  Debug_Print("====================================================\r\n");
+
+  Debug_Print("UART ............... OK\r\n");
+  Debug_Print("PWM ................ OK\r\n");
+  Debug_Print("ADC ................ OK\r\n");
+  Debug_Print("Simulation ......... OK\r\n");
+  Debug_Print("State Machine ...... OK\r\n");
+
+  Debug_Print("\r\nSystem Ready\r\n");
+  Debug_Print("----------------------------------------------------\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -136,33 +150,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  SystemInputs inputs;
+	  StateMachine_Update();
 
-	  inputs = Simulation_GetInputs();
-
-
-	  Debug_Print("\r\n--- Simulation Data ---\r\n");
-
-	  Debug_Print("Bus Distance: %.1f cm\r\n",
-	              inputs.busDistance_cm);
-
-	  Debug_Print("Driver Temperature: %.1f C\r\n",
-	              inputs.driverTemperature_C);
-
-	  Debug_Print("MCU Temperature: %.1f C\r\n",
-	              inputs.mcuTemperature_C);
-
-	  Debug_Print("Power Factor: %.2f\r\n",
-	              inputs.powerFactor);
-
-	  Debug_Print("Over Current: %s\r\n",
-	              inputs.overCurrent ? "FAULT" : "OK");
-
-	  Debug_Print("Over Voltage: %s\r\n",
-	              inputs.overVoltage ? "FAULT" : "OK");
-
-
-	  HAL_Delay(1000);
+	      HAL_Delay(3000);
   }
   /* USER CODE END 3 */
 }
