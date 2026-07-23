@@ -10,6 +10,12 @@
 
 #include <stdint.h>
 
-uint8_t FindBestCapacitorMask(float currentPF);
+
+float CalculateSwitchCapacitance(uint8_t mask);
+
+uint8_t FindBestCapacitorMask(float targetCapacitance);
+
+float CalculateTargetCapacitance(float misalignment_mm);
+
 
 #endif /* INC_CAPACITOR_CONTROLLER_H_ */

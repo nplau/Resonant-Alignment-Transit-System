@@ -4,21 +4,25 @@
  *  Created on: Jul 22, 2026
  *      Author: nicolelau
  */
-
 #include "power_factor.h"
 #include <math.h>
 
 
-float CalculatePowerFactor(float voltage,
-                           float current)
+#define FREQUENCY_HZ 85000.0f
+
+
+float CalculatePowerFactor(float phaseDelay_us)
 {
 
-    float phaseDifference = voltage - current;
+    float phaseRadians;
 
 
-    float pf = cosf(phaseDifference);
+    phaseRadians =
+        2.0f * M_PI *
+        FREQUENCY_HZ *
+        (phaseDelay_us / 1000000.0f);
 
 
-    return pf;
+    return cosf(phaseRadians);
 
 }

@@ -46,14 +46,17 @@ typedef enum
 typedef struct
 {
     float busDistance_cm;
+    float misalignment_mm;
 
     float driverTemperature_C;
     float mcuTemperature_C;
 
     float voltageSample;
     float currentSample;
+    float phaseDelay_us;
 
-    float powerFactor;
+    bool overCurrent;
+    bool overVoltage;
 
 } SystemInputs;
 

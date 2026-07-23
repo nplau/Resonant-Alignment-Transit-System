@@ -16,5 +16,6 @@
 
 void Debug_Init(UART_HandleTypeDef *huart);
 void Debug_Print(const char *format, ...);
+void PrintCapacitorMask(uint8_t mask);
 
 #endif /* INC_DEBUG_H_ */

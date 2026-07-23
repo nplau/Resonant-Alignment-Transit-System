@@ -7,11 +7,13 @@
 
 
 #include "state_machine.h"
+#include "capacitor_controller.h"
 
 #include "simulation.h"
 #include "config.h"
 #include "debug.h"
 #include "pwm.h"
+#include "power_factor.h"
 
 static SystemState currentState;
 
@@ -32,6 +34,20 @@ void StateMachine_Update(void)
     SystemInputs inputs;
 
     inputs = Simulation_GetInputs();
+
+    float powerFactor;
+
+    powerFactor = CalculatePowerFactor(inputs.phaseDelay_us);
+
+    uint8_t capacitorMask;
+    float targetCapacitance;
+
+    targetCapacitance =
+        CalculateTargetCapacitance(inputs.misalignment_mm);
+
+
+    capacitorMask =
+        FindBestCapacitorMask(targetCapacitance);
 
 
     /*---------------- Safety Monitoring ----------------*/
@@ -81,13 +97,6 @@ void StateMachine_Update(void)
         Debug_Print("\r\n[PRECHARGE]\r\n");
 
         Debug_Print("Loading Capacitor Bank\r\n");
-
-        Debug_Print("Capacitor Bank\r\n");
-        Debug_Print("C1 : ON\r\n");
-        Debug_Print("C2 : OFF\r\n");
-        Debug_Print("C3 : ON\r\n");
-        Debug_Print("C4 : OFF\r\n");
-        Debug_Print("C5 : OFF\r\n");
 
         currentState = STATE_ALIGNMENT_CHECK;
 
@@ -144,15 +153,17 @@ void StateMachine_Update(void)
     	Debug_Print("MCU Temp........ %.1f C\r\n",
     	        inputs.mcuTemperature_C);
 
-    	Debug_Print("Power Factor.... %.2f\r\n",
-    	        inputs.powerFactor);
+    	Debug_Print("Phase Delay: %.2f us\r\n",
+    	            inputs.phaseDelay_us);
 
-    	Debug_Print("Capacitor Bank\r\n");
-    	Debug_Print("C1 : ON\r\n");
-    	Debug_Print("C2 : OFF\r\n");
-    	Debug_Print("C3 : ON\r\n");
-    	Debug_Print("C4 : OFF\r\n");
-    	Debug_Print("C5 : OFF\r\n");
+
+    	Debug_Print("Target Capacitance: %.2f nF\r\n",
+    	            targetCapacitance);
+
+    	Debug_Print("Power Factor.... %.2f\r\n",
+    	        powerFactor);
+
+    	PrintCapacitorMask(capacitorMask);
 
         if(inputs.busDistance_cm < CHARGING_MIN_DISTANCE_CM ||
            inputs.busDistance_cm > CHARGING_MAX_DISTANCE_CM)

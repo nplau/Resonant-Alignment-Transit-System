@@ -30,6 +30,7 @@
 #include "adc.h"
 #include "simulation.h"
 #include "state_machine.h"
+#include "capacitor_controller.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

@@ -1,2 +1,3 @@
 ../Core/Src/debug.c:13:6:Debug_Init	16	static
 ../Core/Src/debug.c:18:6:Debug_Print	152	static
+../Core/Src/debug.c:30:6:PrintCapacitorMask	24	static
